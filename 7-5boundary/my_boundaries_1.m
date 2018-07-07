@@ -1,8 +1,21 @@
 function B=my_boundaries_1(image)
 I = imread(image);%读入图像
-BW = im2bw(I, graythresh(I));%转换成2进制图像
+
+if image=='rice.png'
+    %rice 可以调节一下对比度再膨胀
+    SE = strel('disk',2);%用于膨胀腐蚀及开闭运算等操作的结构元素对象
+    %对图像实现开运算，开运算一般能平滑图像的轮廓，消弱狭窄的部分，去掉细的突出。
+    L = imopen(I,SE);
+    figure,imshow(L);
+    BW = im2bw(L, graythresh(I));
+    figure,imshow(BW);
+else
+    BW = im2bw(I, graythresh(I));%转换成2进制图像
+end
+
 %[B,L] = bwboundaries(BW,'noholes');%寻找边缘，不包括孔
 %目前假设前景为白色，背景为黑色
+
 [h,w]=size(BW);
 bw_tag=bwlabel(BW); %用连通区域来辅助标记
 %如果该图形已经被边界跟踪处理了，那么将该图形在bw_tag对应的区域全部置0
@@ -10,9 +23,8 @@ bw_tag=bwlabel(BW); %用连通区域来辅助标记
 %B=cell()
 %搜索元胞数组的添加方法a=[1 2 2]; B=[B a]
 B=cell(0,1);
-%方向为顺时针，左方（west）为零
-%循环是以1，2，3，4，5，6，7，8来循环
-%          0      1      2      3     4     5      6     7 
+%方向为顺时针，左方（west）为1
+%          1      2      3      4     5     6      7     8 
 direction=[-1  -1; 0, -1; 1  -1; 1  0; 1  1; 0  1; -1  1; -1  0];
 
 %起始记录：起始点，以及起点下一个边界点（当循环到同一个起始点且下一个边界点相同时，此边界跟踪完成）
