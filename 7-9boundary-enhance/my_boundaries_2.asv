@@ -1,17 +1,9 @@
-function B=my_boundaries_1(image)
+function B=my_boundaries_2(image)
 I = imread(image);%读入图像
+
 BW = im2bw(I, graythresh(I));%转换成2进制图像
 %[B,L] = bwboundaries(BW,'noholes');%寻找边缘，不包括孔
 %目前假设前景为白色，背景为黑色
-
-if image=='rice.png'
-    SE = strel('disk',2);%用于膨胀腐蚀及开闭运算等操作的结构元素对象
-    %对图像实现开运算，开运算一般能平滑图像的轮廓，消弱狭窄的部分，去掉细的突出。
-    L = imopen(I,SE);
-    figure,imshow(L);
-    LBW = im2bw(L, graythresh(I));
-    figure,imshow(LBW);
-end
 
 [h,w]=size(BW);
 bw_tag=bwlabel(BW); %用连通区域来辅助标记

@@ -4,9 +4,9 @@ close all;
 I = imread('rice.png');
 [width,height] = size(I);
 J = edge(I,'canny');
-%figure,imshow(J);
+figure,imshow(J);
 K = imfill(J,'holes');
-%figure,imshow(K);
+figure,imshow(K);
 SE = strel('disk',3);%用于膨胀腐蚀及开闭运算等操作的结构元素对象
 %对图像实现开运算，开运算一般能平滑图像的轮廓，消弱狭窄的部分，去掉细的突出。
 L = imopen(K,SE);
