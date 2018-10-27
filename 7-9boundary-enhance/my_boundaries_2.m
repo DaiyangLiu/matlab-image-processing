@@ -61,10 +61,12 @@ for i=1:h
                     end
                     k=mod( k, 8)+1;
                     
-                    if is_noise==9
+                    if is_noise==9 %搜索了完整的一周都没有遇到相邻的像素点，所以这个点是一个孤立的像素点，于是选择跳过
                         break;
                     end
                 end      
+                
+                
                 if is_noise==9
                     break;
                 end
@@ -73,6 +75,7 @@ for i=1:h
             end
             
             B=[B point_set];
+            
             bw_tag=bw_tag-(bw_tag==brush_tag)*brush_tag;      
         end
     end

@@ -26,15 +26,15 @@ cpj=cumsum(histj)/numel(J);
 %绘制这两幅图的累积概率图
 figure,plot(cpi),title('原图累积概率');
 figure,plot(cpj),title('标准图累积概率');
-%SML
+
 %index的下标代表原始图的灰度，值代表映射到标准图上的灰度
 for m=1:256
-    %取规定累积直方图的各项依次向原始直方图进行，每次 都选择最接近的数值
     value{m}=abs(cpj-cpi(m));
     %存下标
     [temp,index(m)]=min(value{m});
     
 end
+
 
 new_img=uint8(zeros(i_h, i_w));
 
@@ -49,7 +49,7 @@ figure
 % 显示图像
 subplot(2,3,1);imshow(I);title('原图');
 subplot(2,3,2);imshow(J);title('标准图');
-subplot(2,3,3);imshow(new_img);title('myself匹配到标准图');
+subplot(2,3,3);imshow(new_img);title('匹配到标准图');
 
 % 显示灰度直方图
 subplot(2,3,4);imhist(I);title('原图');

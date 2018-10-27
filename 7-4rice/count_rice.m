@@ -1,4 +1,4 @@
-function count_rice()
+function L=count_rice()
 I = imread('rice.png');
 [width,height] = size(I);
 J = edge(I,'canny');

@@ -11,3 +11,15 @@
 
 
 10-09-参考自：https://blog.csdn.net/humanking7/article/details/46606791
+
+
+
+10-26-fourier-my-fourier 参考自：https://wenku.baidu.com/view/e76f699376c66137ef06193d.html
+
+
+
+10-26-fourier-mySFFilt2Demo参考自：http://blog.sciencenet.cn/home.php?mod=space&uid=425437&do=blog&id=1046849
+
+
+
+10-26-zhifangtujunhenghua参考自：https://blog.csdn.net/acmore_xiong/article/details/53183131

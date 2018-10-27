@@ -1,4 +1,4 @@
-function rice_count()
+function rice_count()  %网上搜到的代码，作为参考
 clear;
 close all;
 I = imread('rice.png');

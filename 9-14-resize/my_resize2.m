@@ -1,4 +1,7 @@
 function resize_img=my_resize2(img,h,w)
+%输入：图片地址，期望图片高度，期望图片宽度
+%输出：放缩后的图片
+%使用示例：new_img=my_resize2('Boston.jpg',500,800);
 I=imread(img);
 [src_h,src_w,d]=size(I);
 dst_h=h;
@@ -18,10 +21,6 @@ for i=1:dst_w
         j_small=floor(src_j);
         j_large=ceil(src_j);
         src_j=round(src_j);
-        %point1=I(j_small,i_small,:) + ( I(j_small,i_large,:) - I(j_small,i_small,:) ) * ( src_i - i_small );
-        %point2=I(j_large,i_small,:) + ( I(j_large,i_large,:) - I(j_large,i_small,:) ) * ( src_i - i_small );
-
-        %point3=point1 + ( point2 - point1 ) * ( src_j - j_small );  
         
         if i_small>0 && i_large<= src_w && j_small>0 && j_large <= src_h
             point1=((i_large-src_i)/(i_large-i_small)) *I(j_small,i_small,:) + ((src_i-i_small)/(i_large-i_small))*I(j_small,i_large,:);
@@ -31,8 +30,9 @@ for i=1:dst_w
 
             resize_img(j,i,:)= point3;
         end
-        %resize_img(j,i,:)= point3;
-    end
+    end  
 end
+figure,imshow(I),title("原图");
+figure,imshow(resize_img),title("放缩后的图片");
 
 end
