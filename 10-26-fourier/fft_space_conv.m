@@ -27,5 +27,5 @@ figure,imshow(J,[]);title('blur by gaussian kernal');
  Q1(126:132,126:132)=h;
  Q1=fftshift(Q1);
  FQ1=fft2(Q1);
-  r3=ifft2(FI.*FQ1);
+ r3=ifft2(FI.*FQ1);
     figure,imshow(r3,[]);
