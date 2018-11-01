@@ -1,0 +1,62 @@
+clear all;
+I=imread('lena.jpg');
+I=rgb2gray(I);
+I_i = imhist(I);
+figure,plot(I_i);title('I_i');
+%–≈∫≈—”Õÿ
+N=256*2;
+hi=zeros(N,1);
+hi(1:N/2)=I_i;
+figure,plot(hi);title('hi');
+%“ªŒ¨¿Î…¢”‡œ“±‰ªª
+
+ft=size(hi);
+
+Cu=1.0;
+for u=1:N
+    if u==0
+          Cu=1.0/sqrt(2);
+    end 
+    sum=0;
+    for x=1:N
+        sum=sum + hi(x)*cos((2*x+1)*u*pi/(2*N));
+    end    
+    temp=Cu * sqrt(2.0/N)*sum;
+    ft(u)=temp;
+end
+
+ft=int16(ft);
+figure
+subplot(1,2,1),plot(ft);title('ft');
+
+%∆µ”Ú¬À≤® 
+%¬À≤®∆˜ h=[1*50 *]
+hp=zeros(N,1);
+d=50;
+hp(1:d)=1;
+
+
+result=size(hi);
+for u=1:N
+    if u==0
+          Cu=1.0/sqrt(2);
+    end 
+    result(u)=Cu * hp(u) * ft(u);
+subplot(1,2,2),plot(result);title('result');
+
+new_hi=size(hi);
+%∏µ¿Ô“∂∑¥±‰ªª
+for x=1:N
+    sum=0;         
+    for u=1:N
+        sum=sum + result(u)*cos((2*x+1)*u*pi/(2*N));
+    end
+    if hi(x)==0
+        sum=0
+    end  
+    temp=sqrt(2.0/N)*sum;
+    new_hi(x)=abs(temp);
+end
+
+new_hi=int16(new_hi);
+figure,plot(new_hi);title('new hi');
