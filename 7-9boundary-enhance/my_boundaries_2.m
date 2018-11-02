@@ -1,7 +1,7 @@
 function B=my_boundaries_2(image)
 I = imread(image);%读入图像
 
-BW = im2bw(I, graythresh(I));%转换成2进制图像
+BW = im2bw(I, graythresh(I));%转换成二值图像
 %[B,L] = bwboundaries(BW,'noholes');%寻找边缘，不包括孔
 %目前假设前景为白色，背景为黑色
 
@@ -64,9 +64,7 @@ for i=1:h
                     if is_noise==9 %搜索了完整的一周都没有遇到相邻的像素点，所以这个点是一个孤立的像素点，于是选择跳过
                         break;
                     end
-                end      
-                
-                
+                end                     
                 if is_noise==9
                     break;
                 end
