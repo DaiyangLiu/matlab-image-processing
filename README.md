@@ -26,8 +26,8 @@
 
 
 
-#### update 2020-05-24
+### update 2020-05-24
 
-#### caidwang (https://github.com/caidwang) 同学添加了python版本实现。
+### caidwang (https://github.com/caidwang) 同学添加了python版本实现。
 
 代码见文件夹：python-version-by-caidwang
