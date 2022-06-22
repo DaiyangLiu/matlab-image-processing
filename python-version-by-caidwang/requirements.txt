@@ -6,7 +6,7 @@ ipython-genutils==0.2.0
 jedi==0.15.1
 llvmlite==0.29.0
 numba==0.45.1
-numpy==1.17.2
+numpy==1.22.0
 opencv-python==4.1.1.26
 ortools==7.3.7083
 parso==0.5.1
